@@ -9,4 +9,4 @@ export class UserController {
   test(): User[] {
     return this.userService.test();
   }
-}
+} 
