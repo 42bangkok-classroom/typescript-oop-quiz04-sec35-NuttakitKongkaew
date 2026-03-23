@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import * as fs from 'fs';
 import { IUser } from './user.interface';
+import { CreateUserDto } from './dto/create-user.dto';
 
 @Injectable()
 export class UserService {
@@ -38,5 +39,20 @@ export class UserService {
     }
 
     return result;
+  }
+
+  create(dto: CreateUserDto): IUser {
+    const users = this.findAll();
+
+    const newUser: IUser = {
+      id: (users.length + 1).toString(),
+      ...dto,
+    };
+
+    users.push(newUser);
+
+    fs.writeFileSync('data/users.json', JSON.stringify(users, null, 2));
+
+    return newUser;
   }
 }
