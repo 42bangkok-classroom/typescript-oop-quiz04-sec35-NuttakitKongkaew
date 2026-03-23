@@ -4,7 +4,6 @@ import { IUser } from './user.interface';
 
 @Injectable()
 export class UserService {
-
   test(): IUser[] {
     return [];
   }
@@ -13,5 +12,4 @@ export class UserService {
     const data = fs.readFileSync('data/users.json', 'utf-8');
     return JSON.parse(data) as IUser[];
   }
-
 }
