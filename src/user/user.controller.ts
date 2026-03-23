@@ -4,7 +4,7 @@ import { IUser } from './user.interface';
 
 @Controller('users')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Get('test')
   test(): IUser[] {

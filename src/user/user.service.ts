@@ -10,6 +10,8 @@ export class UserService {
 
   findAll(): IUser[] {
     const data = fs.readFileSync('data/users.json', 'utf-8');
-    return JSON.parse(data);
+    const users: IUser[] = JSON.parse(data);
+
+    return users;
   }
 }
