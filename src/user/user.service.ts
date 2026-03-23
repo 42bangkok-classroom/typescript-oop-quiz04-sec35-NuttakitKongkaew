@@ -21,8 +21,12 @@ export class UserService {
       throw new NotFoundException('User not found');
     }
 
-    if (!fields || fields.length === 0) {
+    if (fields === undefined) {
       return user;
+    }
+
+    if (fields.length === 0) {
+      return {};
     }
 
     const result: Partial<IUser> = {};
